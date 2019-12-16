@@ -1,0 +1,16 @@
+<ion-menu [content]="mycontent">
+    <ion-header>
+        <ion-toolbar color="azul">
+            <ion-title text-center class="title-nav">Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <ion-item (click)="openPage(pages[0])">
+                <ion-icon name="notifications"></ion-icon> Pugas</ion-item>
+                <ion-icon name="log-out"></ion-icon> Salir</ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPages" #mycontent swipeBackEnabled="false"></ion-nav>

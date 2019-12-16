@@ -1,6 +1,8 @@
 {
   "name": "blank",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "cb3a8a17"
 }

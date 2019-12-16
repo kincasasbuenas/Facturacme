@@ -19,12 +19,26 @@
         </ion-row>
 
         <ion-row>
+          <form   #f="ngForm" novalidate="" class="needs-validation" [ngClass]="{'was-validated': (email.errors?.required || password.errors?.minlength) && email.touched}">
             <ion-col size="12" class="top-5">
                 <ion-list>
                   <ion-item>
                     <ion-label position="floating">Email</ion-label>
-                    <ion-input name="email" type="email"></ion-input>
+                    <ion-input name="email"
+                               type="email"
+                               [(ngModel)]="usuario.email"
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                               #email="ngModel"
+                               required></ion-input>
                   </ion-item>
+                </ion-list>
+                <ion-list *ngIf="email.touched" class="label-invalid">
+                  <div *ngIf="email.errors?.required && email.touched" class="invalid-feedback">
+                    *Email es obligatorio
+                  </div>
+                  <div *ngIf="email.errors?.pattern && email.touched" class="invalid-feedback">
+                    *Correo invalido
+                  </div>
                 </ion-list>
             </ion-col>
 
@@ -32,38 +46,28 @@
                 <ion-list>
                   <ion-item>
                     <ion-label position="floating">Contraseña</ion-label>
-                    <ion-input name="password" type="password"></ion-input>
+                    <ion-input name="password"
+                               type="password"
+                               [(ngModel)]="usuario.password"
+                               required
+                               minlength="5"
+                               #password="ngModel"></ion-input>
                   </ion-item>
+                </ion-list>
+                <ion-list *ngIf="email.touched" class="label-invalid">
+                  <div *ngIf="password.errors?.required && password.touched" class="invalid-feedback">
+                    *password es obligatorio
+                  </div>
+                  <div *ngIf="password.errors?.minlength && password.touched" class="invalid-feedback">
+                    *Minimo {{password.errors.minlength.requiredLength}} caracteres
+                  </div>
                 </ion-list>
             </ion-col>
 
             <ion-col size="12"class="top-5">
-              <ion-button expand="block">Iniciar Sesion</ion-button>
+              <ion-button expand="block" (click)="login(f)" [disabled]="!f.valid">Iniciar Sesion</ion-button>
             </ion-col>
-
+        </form>
         </ion-row>
-        <!--ion-row>
-            <ion-col>
-                <ion-card *ngFor="let card of cards">
-                    <ion-card-header>
-                        {{card.carrierName}}
-                    </ion-card-header>
-                    <ion-card-content>
-                        <ion-list>
-                            <ion-item><b>simSlotIndex</b> {{ card.simSlotIndex }}</ion-item>
-                            <ion-item><b>displayName</b> {{ card.displayName }}</ion-item>
-                            <ion-item><b>isNetworkRoaming</b> {{ card.isNetworkRoaming }}</ion-item>
-                            <ion-item><b>isDataRoaming</b> {{ card.isDataRoaming }}</ion-item>
-                            <ion-item><b>phone</b> {{ card.phoneNumber }}</ion-item>
-                            <ion-item><b>subscriberId</b> {{ card.subscriberId }}</ion-item>
-                        </ion-list>
-                    </ion-card-content>
-                </ion-card>
-                <pre>
-                    {{simInfo | json }}
-                </pre>
-            </ion-col>
-        </ion-row-->
-
     </ion-grid>
 </ion-content>

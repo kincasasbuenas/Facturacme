@@ -1,4 +1,4 @@
-page-login {
+app-login {
     ion-content {
         background: #fff;
     }
@@ -14,4 +14,13 @@ page-login {
     .top-5 {
         margin-top: 5%;
     }
+}
+form{
+  width: 100%!important;
+}
+.invalid-feedback{
+  color: red;
+}
+.label-invalid{
+  padding: 0px;
 }

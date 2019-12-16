@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {OperationService} from '../../services/operation.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private _operationService:OperationService) {
+    this._operationService.getOpportunities();
+  }
 
 }
