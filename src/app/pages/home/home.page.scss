@@ -1,1 +1,25 @@
-
+ion-card-title{
+  font-size: 16px;
+  .price{
+    float: right;
+  }
+}
+ion-card-subtitle{
+  font-size: 15px;
+  i{
+    vertical-align: middle;
+    font-size: 20px;
+  }
+}
+.margin-top{
+  margin-top:25px;
+}
+.text-bold{
+  font-weight: bold;
+}
+.primary{
+  color: #3880ff;
+}
+.dark{
+  color:#222428;
+}

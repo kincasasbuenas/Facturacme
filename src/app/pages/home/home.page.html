@@ -11,7 +11,31 @@
 
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <ion-card *ngFor="let opportunity of oportunities">
+      <ion-card-header>
+        <ion-card-title class="dark">
+          Coca-cola Company
+          <span class="price ion-text-right primary">$600.000</span>
+        </ion-card-title>
+        <ion-card-subtitle class="ion-text-right">
+          Remate
+          <i class="material-icons">monetization_on</i>
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>
+          <ion-label>Fecha de pago:</ion-label><br>
+          <span class="text-bold">16 ago 2019</span>
+        </p>
+        <p class="margin-top">
+          <label>Fondada al <span class="primary">{{ opportunity.percentage_completed | number : '1.1-1' }}</span></label>
+          <ion-progress-bar color="primary" value="{{opportunity.percentage_completed | number : '1.2'}}"></ion-progress-bar>
+        </p>
+        <p>
+           El remate cierra el {{opportunity.end_date | date:'d MMM' }}, a las {{ opportunity.end_date | date:'HH:mm'}}h
+        </p>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

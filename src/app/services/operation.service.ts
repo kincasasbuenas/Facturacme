@@ -11,7 +11,8 @@ import {UserService} from './user.service';
 })
 export class OperationService {
 
-  uriOperation='https://fact2-dev.herokuapp.com/v1/factoring/auctions';
+  uriAuctions='https://fact2-dev.herokuapp.com/v1/factoring/auctions';
+  uriOperation='https://fact2-dev.herokuapp.com/v1/factoring/operations/';
   token:string;
 
   constructor(private http:HttpClient,private platform:Platform, private nativeStorage: NativeStorage,private _userService:UserService) { }
@@ -20,15 +21,22 @@ export class OperationService {
   getOpportunities(){
     this._userService.loadToken();
     this.token=this._userService.userToken;
-    let url = this.uriOperation;
+    let url = this.uriAuctions;
     let headers= new HttpHeaders({
       'Content-Type':'application/json',
-      'Authorization':'Bearer ' + this.token
+      'Authorization':'jwt ' + this.token
     });
-    console.log('oportunidades 1');
-    return this.http.post(url,'', {headers}).pipe(map(res => {
-      console.log('oportunidades');
-      console.log(res);
-    }));
+    return this.http.get(url,{headers}).pipe(map(res => res));
+  }
+
+  getOperationId(idOperation:string){
+    this._userService.loadToken();
+    this.token=this._userService.userToken;
+    let url = this.uriOperation+idOperation;
+    let headers= new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization':'jwt ' + this.token
+    });
+    return this.http.get(url,{headers}).pipe(map(res => res));
   }
 }
