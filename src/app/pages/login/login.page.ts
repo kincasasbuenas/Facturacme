@@ -11,7 +11,6 @@ import { NavController, AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-
    usuario:Object={
     email:null,
     password:null,
@@ -33,7 +32,7 @@ export class LoginPage implements OnInit {
   }
 
   login(f:NgForm){
-      console.log("valores: ", f.value);
+      //console.log("valores: ", f.value);
       this._userService.authUser(f.value.email,f.value.password).subscribe(data =>
       {
         console.log(data);

@@ -4,12 +4,15 @@ ion-card-title{
     float: right;
   }
 }
-ion-card-subtitle{
+ion-card-header ion-card-subtitle{
   font-size: 15px;
-  i{
-    vertical-align: middle;
-    font-size: 20px;
-  }
+}
+ion-progress-bar{
+  height: 10px;
+  border-radius: 5px;
+}
+.label-priority{
+
 }
 .margin-top{
   margin-top:25px;
@@ -22,4 +25,5 @@ ion-card-subtitle{
 }
 .dark{
   color:#222428;
+  font-weight: bold;
 }

@@ -17,6 +17,7 @@ import {OperationService} from './services/operation.service';
 import {NativeStorage}  from '@ionic-native/native-storage/ngx';
 
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,7 +27,8 @@ import {NativeStorage}  from '@ionic-native/native-storage/ngx';
     HttpClientModule,
     HttpClientJsonpModule,
     FormsModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule
+    ],
   providers: [
     NativeStorage,
     StatusBar,

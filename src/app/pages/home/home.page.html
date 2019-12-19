@@ -10,32 +10,36 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    <ion-card *ngFor="let opportunity of oportunities">
-      <ion-card-header>
-        <ion-card-title class="dark">
-          Coca-cola Company
-          <span class="price ion-text-right primary">$600.000</span>
-        </ion-card-title>
-        <ion-card-subtitle class="ion-text-right">
-          Remate
-          <i class="material-icons">monetization_on</i>
-        </ion-card-subtitle>
-      </ion-card-header>
+  <ion-grid>
+      <ion-col size-lg="6" size-md="6" size-sm="6" size="12"  *ngFor="let opportunity of oportunities">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="dark">
+              <ion-row>
+                <ion-col size="8">{{opportunity.debtor_entity_name}}</ion-col>
+                <ion-col size="4">
+                  <span class="price ion-text-right primary">{{ opportunity.amount | currency:'CLP':'symbol-narrow':'4.2-2'}}</span>
+                </ion-col>
+              </ion-row>
+            </ion-card-title>
+            <ion-card-subtitle class="ion-text-right label-priority" [innerHTML]="opportunity.cost_time_priority | priority">
+            </ion-card-subtitle>
+          </ion-card-header>
 
-      <ion-card-content>
-        <p>
-          <ion-label>Fecha de pago:</ion-label><br>
-          <span class="text-bold">16 ago 2019</span>
-        </p>
-        <p class="margin-top">
-          <label>Fondada al <span class="primary">{{ opportunity.percentage_completed | number : '1.1-1' }}</span></label>
-          <ion-progress-bar color="primary" value="{{opportunity.percentage_completed | number : '1.2'}}"></ion-progress-bar>
-        </p>
-        <p>
-           El remate cierra el {{opportunity.end_date | date:'d MMM' }}, a las {{ opportunity.end_date | date:'HH:mm'}}h
-        </p>
-      </ion-card-content>
-    </ion-card>
-  </div>
+          <ion-card-content>
+            <p>
+              <ion-label>Fecha de pago:</ion-label><br>
+              <span class="text-bold">{{ opportunity.payment_date | date: 'd MMM y'}}</span>
+            </p>
+            <p class="margin-top">
+              <label>Fondeada al <span class="primary text-bold">{{ opportunity.percentage_completed | percent }}</span></label>
+              <ion-progress-bar color="primary" value="{{opportunity.percentage_completed | number : '1.2'}}"></ion-progress-bar>
+            </p>
+            <p>
+               El remate cierra el: {{opportunity.end_date | date:'d MMM' }}, a las {{ opportunity.end_date | date:'HH:mm'}}h
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-grid>
 </ion-content>
